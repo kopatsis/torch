@@ -1,8 +1,12 @@
 package routing
 
-import "github.com/gin-gonic/gin"
+import (
+	"torch/data"
 
-func New() *gin.Engine {
+	"github.com/gin-gonic/gin"
+)
+
+func New(fullService *data.MainService) *gin.Engine {
 	router := gin.Default()
 	return router
 }

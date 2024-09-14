@@ -3,6 +3,7 @@ package repositories
 import (
 	"torch/data/models"
 
+	"github.com/go-redis/redis/v8"
 	"gorm.io/gorm"
 )
 
@@ -14,11 +15,12 @@ type ProductRepository interface {
 }
 
 type productRepo struct {
-	db *gorm.DB
+	db    *gorm.DB
+	redis *redis.Client
 }
 
-func NewProductRepository(db *gorm.DB) ProductRepository {
-	return &productRepo{db: db}
+func NewProductRepository(db *gorm.DB, redis *redis.Client) ProductRepository {
+	return &productRepo{db: db, redis: redis}
 }
 
 func (r *productRepo) Create(product models.Product) error {

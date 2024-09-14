@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 	"torch/config"
+	"torch/data"
 	"torch/routing"
 )
 
@@ -11,7 +12,11 @@ func main() {
 
 	config.EnvVariables()
 
-	rtr := routing.New()
+	mysql, redis := config.NewMySQLConnection(), config.NewRedisClient()
+
+	fullService := data.NewMainService(mysql, redis)
+
+	rtr := routing.New(fullService)
 
 	port := config.GetPort()
 

@@ -3,6 +3,7 @@ package repositories
 import (
 	"torch/data/models"
 
+	"github.com/go-redis/redis/v8"
 	"gorm.io/gorm"
 )
 
@@ -14,11 +15,12 @@ type UserRepository interface {
 }
 
 type userRepo struct {
-	db *gorm.DB
+	db    *gorm.DB
+	redis *redis.Client
 }
 
-func NewUserRepository(db *gorm.DB) UserRepository {
-	return &userRepo{db: db}
+func NewUserRepository(db *gorm.DB, redis *redis.Client) UserRepository {
+	return &userRepo{db: db, redis: redis}
 }
 
 func (r *userRepo) Create(user models.User) error {
