@@ -12,4 +12,8 @@ To use this project, use the single line below
 
 ```git clone git@github.com:kopatsis/torch.git new-folder-name --depth 1 && rm -rf new-folder-name/.git```
 
-Just use your own name. The module will still be named Torch, but it can be changed.
+Just replace new-folder-name with the new chosen name. The module will still be named Torch, but it can be changed. An easy way to do this is with the Bash command below
+
+```grep -rl "torch" . | xargs sed -i "s|torch|new-folder-name|g"```
+
+Again replace new new-folder-name with the new one.
