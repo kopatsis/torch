@@ -9,6 +9,7 @@ The backend by default uses Gorm for MySQL for a database in addition to Redis f
 No real routing has been created yet nor have specialty packages, such as Firebase, Sendgrid, Stripe, etc as those are to be added for the specific implementation. 
 
 To use this project, use the single line below
+
 ```git clone git@github.com:kopatsis/torch.git new-folder-name --depth 1 && rm -rf new-folder-name/.git```
 
 Just use your own name. The module will still be named Torch, but it can be changed.
